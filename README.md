@@ -92,9 +92,13 @@ We believe that the `description` column is MNAR because users are likely to rep
 Next, we chose to explore the missingness mechanism of the `average_rating` column in the recipes dataset. More specifically, we investigated whether the missingness of the `average_rating` column is dependent on the `n_ingredients` column, which keeps track of the number of ingredients, or the `day_submitted` column, which reports which day of the month a review was published. 
 
 > `average_rating` and `n_ingredients`
-**Null Hypothesis:** The missingness of average_rating does not depend on the number of ingredients in the recipe.  
+> 
+**Null Hypothesis:** The missingness of average_rating does not depend on the number of ingredients in the recipe.
+
 **Alternate Hypothesis:** The missingness of average_rating does depend on the number of ingredients in the recipe.
+
 **Test Statistic:** The absolute difference in means between `n_ingredients` in the distribution of the group without missing `average_rating` values and the distribution of the group without missing `average_rating` values. 
+
 **Significance Level:** 0.05
 
 To conduct this permutation test, we shuffled the missingness of `average_rating` 1000 times to collect 1000 mean differences between the two distributions as defined in the test statistic section.
@@ -103,10 +107,15 @@ To conduct this permutation test, we shuffled the missingness of `average_rating
 
 The **observed statistic** of these two distributions is ~0.254 as shown by the vertical line in the graph above. The p-value determined from this permutation test is 0.0. As 0.0 < 0.05 (our significance level), we **reject the null hypothesis**, concluding that the missingness of `average_rating` is dependent on the `n_ingredients` column. 
 
+
 > `average_rating` and `day_submitted`
+> 
 **Null Hypothesis:** The missingness of average_rating does not depend on the day of the month the review was submitted.  
+
 **Alternate Hypothesis:** The missingness of average_rating does depend on the day of the month the review was submitted
+
 **Test Statistic:** The absolute difference in means between `day_submitted` in the distribution of the group without missing `average_rating` values and the distribution of the group without missing `average_rating` values. 
+
 **Significance Level:** 0.05
 
 To conduct this permutation test, we shuffled the missingness of `average_rating` 1000 times to collect 1000 mean differences between the two distributions as defined in the test statistic section.
