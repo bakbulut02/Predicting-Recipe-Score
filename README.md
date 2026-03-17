@@ -68,6 +68,12 @@ Overall, our recipes dataset now has 83782 rows and 15 columns. Embedded below i
 ></iframe>
 
 ### Bivariate Plot
+<iframe
+  src="assets/bivariate_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Assessment of Missingness
 
