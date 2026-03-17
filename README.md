@@ -84,7 +84,7 @@ put a pivot table!
 As previously mentioned, the columns that contain missing data are `name`, `description`, and `average_rating`. Let's do some exploration to determine why this may be! 
 
 ### MNAR Analysis 
-We believe that the `description` column is MNAR because users are likely to report a rating description when they have strong feelings about the recipe, whether that be positive or negative. However, users are likely not to report a rating explanation when they have mediocre or few thoughts on the recipe. This missingness mechanism could be turned into MAR if we collected additional information, like whether the user viewed or cooked the recipe, and also how frequently users rate recipes. 
+We believe that the `description` column is MNAR because users are likely to report a rating description when they have strong feelings about the recipe, whether that be positive or negative. However, users are likely not to report a rating explanation when they have few or mediocre thoughts on the recipe. This missingness mechanism could be turned into MAR if we collected additional information, like whether the user viewed or cooked the recipe, and also how frequently users rate recipes. 
 
 ### Missingness Dependency
 Next, we chose to explore the missingness mechanism of the `average_rating` column in the recipes dataset. More specifically, we investigated whether the missingness of the `average_rating` column is dependent on the `n_ingredients` column, which keeps track of the number of ingredients, or the `day_submitted` column, which reports which day of the month a review was published. 
@@ -140,6 +140,9 @@ To conduct this permutation test, we split up our recipe data set into 2 groups 
 As the p-value found 0.854 is greater than our chosen significance level of 0.05, we **fail to reject the null hypothesis**. Thus, we conclude that we have not found enough evidence to confidently say that the difference in average rating of recipes with and without butter is not due to random chance alone. 
 
 ## Framing a Prediction Problem
+For this section, we aim to predict the **average rating of a recipe** using features extracted from our `recipe` dataset. We have decided to approach this problem using multiclass classification by treating the `average_rating` of a recipe as ordinal data by converting each value into an integer ranging from values 1 to 5. 
+
+We chose `average_rating` as our response variable as it is a good indicator for how a recipe the quality of a given recipe. Furthermore, the F1-score is our primary metric for our model because the dataset has `average_rating` mostly in the 4-5 range, creating a class imbalance. Though we can still use accuracy, we will not rely on it to measure the performance of our model, as it can be misleading due to these imbalanced classes. F1-score, on the other hand, is a better metric for our problem as it combines precision and recall, which makes it more robust to class imbalances. 
 
 ## Baseline Model
 
