@@ -41,15 +41,47 @@ To increase readability and overall usability for our research purposes, we have
    - Found the average rating per recipe, as a Series, and added this series into the       dataset as a new column `average_rating`.
 2. Converted the `steps`, `ingredients`, `nutrition`, and `tags` columns into lists
    - Though these columns appear to already contain lists, they are actually strings.
-     Thus, we created a helper function `string_to_list` to convert them into the list      datatype.
+     Thus, we created a helper function `string_to_list` to convert them into the list          datatype.
    - These transformations are represented in `recipes` as columns named `steps_lst`,       `ingredients_lst`, `nutrition_lst`, and `tags_lst` respectively. Furthermore, the      original columns for this data are dropped.
+3. Add `cals` and `sugar` to the dataframe
+   - These two columns represent the number of calories (#) and the amount of sugar (PDV)       in a given recipe.
+4. Add `n_tags` to the dataframe
+   - This column shows the number of tags a given recipe contains.
+5. Add `year`, `month`, and `day_of_month` columns to the dataframe.
+   - These columns represent the year, month, and day that each review was uploaded,             respectively.
+
+Shown below are the columns of the cleaned recipe dataframe. 
+
+|                 | 0       |
+|:----------------|:--------|
+| name            | object  |
+| id              | int64   |
+| minutes         | int64   |
+| contributor_id  | int64   |
+| submitted       | object  |
+| n_steps         | int64   |
+| description     | object  |
+| n_ingredients   | int64   |
+| average_rating  | float64 |
+| steps_lst       | object  |
+| ingredients_lst | object  |
+| nutrition_lst   | object  |
+| tags_lst        | object  |
+| cat_rating      | float64 |
+| cals            | float64 |
+| sugar           | float64 |
+| n_tags          | int64   |
+| n_ingr          | int64   |
+| year            | int64   |
+| month           | int64   |
+| day_of_month    | int64   |
   
 After cleaning up our dataset, we observed that 3 columns appear to have missing data, these being:
 1. `name`: 1 missing value
 2. `description`: 70 missing values
 3. `average_rating`: 2609 missing values
 
-Overall, our recipes dataset now has 83782 rows and 15 columns. Embedded below is the head of our dataframe, including only the relevant columns and truncated values due to the size of `recipe`. 
+Overall, our recipes dataset now has 83782 rows and 21 columns. Embedded below is the head of our dataframe, including only the relevant columns and truncated values due to the size of `recipe`. 
 
 | name                                 |   minutes |   average_rating |   n_ingredients | ingredients_lst         | steps_lst               | tags_lst                | description             |
 |:-------------------------------------|----------:|-----------------:|----------------:|:------------------------|:------------------------|:------------------------|:------------------------|
