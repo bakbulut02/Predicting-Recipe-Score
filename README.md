@@ -52,7 +52,7 @@ To increase readability and overall usability for our research purposes, we have
 
 Shown below are the columns of the cleaned recipe dataframe. 
 
-|                 | 0       |
+| column          | dtype   |
 |:----------------|:--------|
 | name            | object  |
 | id              | int64   |
