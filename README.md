@@ -93,7 +93,7 @@ Overall, our recipes dataset now has 83782 rows and 21 columns. Embedded below i
 
 ### Univariate Plot
 <iframe
-  src="assets/univariate_plot.html"
+  src="assets/univariate1.html"
   width="800"
   height="600"
   frameborder="0"
@@ -102,7 +102,7 @@ For this plot, we examined the distribution of the number of ingredients per rec
 
 ### Bivariate Plot
 <iframe
-  src="assets/bivariate_plot.html"
+  src="assets/bivariate1.html"
   width="800"
   height="600"
   frameborder="0"
@@ -148,7 +148,12 @@ Next, we chose to explore the missingness mechanism of the `average_rating` colu
 
 To conduct this permutation test, we shuffled the missingness of `average_rating` 1000 times to collect 1000 mean differences between the two distributions as defined in the test statistic section.
 
-**IMPORT A GRAPH**
+<iframe
+  src="assets/missing1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 The **observed statistic** of these two distributions is ~0.254 as shown by the vertical line in the graph above. The p-value determined from this permutation test is 0.0. As 0.0 < 0.05 (our significance level), we **reject the null hypothesis**, concluding that the missingness of `average_rating` is dependent on the `n_ingredients` column. 
 
@@ -165,7 +170,12 @@ The **observed statistic** of these two distributions is ~0.254 as shown by the 
 
 To conduct this permutation test, we shuffled the missingness of `average_rating` 1000 times to collect 1000 mean differences between the two distributions as defined in the test statistic section.
 
-**IMPORT A GRAPH**
+<iframe
+  src="assets/missing2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 The **observed statistic** of these two distributions is -0.065 as shown by the vertical line in the graph above. The p-value determined from this permutation test is 0.725. As 0.725 > 0.05 (our significance level), we **fail to reject the null hypothesis**, concluding that the missingness of `average_rating` is not dependent on the `day_submitted` column. 
 
