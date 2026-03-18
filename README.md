@@ -140,12 +140,30 @@ To conduct this permutation test, we split up our recipe data set into 2 groups 
 As the p-value found 0.854 is greater than our chosen significance level of 0.05, we **fail to reject the null hypothesis**. Thus, we conclude that we have not found enough evidence to confidently say that the difference in average rating of recipes with and without butter is not due to random chance alone. 
 
 ## Framing a Prediction Problem
-For this section, we aim to predict the **average rating of a recipe** using features extracted from our `recipe` dataset. We have decided to approach this problem using multiclass classification by treating the `average_rating` of a recipe as ordinal data by converting each value into an integer ranging from values 1 to 5. 
+For this section, we aim to predict the **average rating of a recipe** using features extracted from our `recipe` dataset. We have decided to approach this problem using multiclass classification by treating the `average_rating` of a recipe as ordinal data by converting each value into an integer ranging from 1 to 5. 
 
 We chose `average_rating` as our response variable as it is a good indicator for how a recipe the quality of a given recipe. Furthermore, the F1-score is our primary metric for our model because the dataset has `average_rating` mostly in the 4-5 range, creating a class imbalance. Though we can still use accuracy, we will not rely on it to measure the performance of our model, as it can be misleading due to these imbalanced classes. F1-score, on the other hand, is a better metric for our problem as it combines precision and recall, which makes it more robust to class imbalances. 
 
 ## Baseline Model
+For our baseline model, we first split our data into training and testing splits and then used a RandomForestClassifier to train our data. For our first feature, we one-hot encoded the top 10 most frequently used ingredients. For example, two of the columns created from this transformation are `one_hot_salt` and `one_hot_butter`. For our second feature, we used the `n_tags` column in the recipe dataframe. 
+
+The F1 score of our baseline model was 0.568; we believe this to be a good baseline for our model, as it currently predicts reasonably better than at random, which would be 0.2 for the five classes. Furthermore, this score tells us that our model is either missing or misclassifying a lot of the more uncommon rating classes (those not in the 4-5 range). 
 
 ## Final Model
+For our final model, we used our one-hot encoded `ingredients_lst` and `n_tags` from our baseline model and added a one-hot encoded `tags_lst` and the `n_ingr` columns as our features. 
 
-## Fairness Analysis
+`ingredients_lst`
+We one-hot encoded the most common ingredients to capture whether or not certain popular ingredients are in a given recipe. The presence of certain ingredients can dramatically influence the taste and likability of a recipe. Thus, this feature allows the model to learn which ingredients are generally associated with higher or lower ratings. 
+
+`tags_lst`
+We one-hot encoded the tags list for a similar reason to why we one-hot encoded the ingredients list. This is because encoding popular tags gives the model important contextual information about each recipe, like the cuisine, dietary category, or time taken to complete. Thus, this feature gives the model insight into user preferences and can explain variation in scores due to factors beyond their ingredients. 
+
+`n_ingr`
+This feature represents the total number of ingredients in a recipe. This gives the model information on the complexity of the recipe, and helps teach the model whether recipes with more ingredients may be perceived as more flavorful, thus resulting in higher ratings or vice versa. 
+
+`n_tags`
+This feature counts the number of tags associated with a given recipe. This feature helps capture how well or broadly a recipe is described. This can relate to how visible/accessible a recipe is and can provide information on how that may affect its average rating. 
+
+Overall, the features used provide the model with a mixture of specific signals and general patterns to improve its ability to predict `average_rating`. We continued to use RandomForestClassifier as our modeling algorithm and conducted a GridSearchCV in order to tune our hyperparameters. The hyperparameters we chose were max_depth, min_samples_test, min_samples_split, and n_estimators. As decision trees can often overfit and be prone to bias, we chose these hyperparameters to help control and correct these errors. 
+
+Our GridSearchCV returned that the best parameters are max_depth = 20, min_samples_test = 1, min_samples_split = 2, and n_estimators = 200. These tuned parameters resulted in a new F1 score of **0.576**. The lack of increase in F1 score likely points to weaknesses in our dataset rather than the model itself. More specifically, the features available in the `recipe` dataset do not contain enough data or are too noisy to provide meaningful predictions on `average_rating`. 
