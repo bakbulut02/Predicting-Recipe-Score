@@ -1,4 +1,4 @@
-# Predicting Recipe Score
+# Butter Together
 Authors: Beliz Akbulut, Caroline McClung
 
 ## Introduction
@@ -78,7 +78,19 @@ For this plot, we examined the distribution of the number of ingredients per rec
 This scatter plot shows how the number of ingredients in a recipe impacts its average rating. Recipes with very few ingredients (<5) appear to have slightly lower ratings, while recipes with a moderate number of ingredients (around 8–10) often have the highest average ratings. In between these two ranges, adding more ingredients does not appear to increase ratings and may even correspond to a slight decrease, forming a roughly quadratic trend.
 
 ### Interesting Aggregates
-put a pivot table!
+| ingredients_lst   |   avg_rating |   avg_n_ingredients |   n_recipes |
+|:------------------|-------------:|--------------------:|------------:|
+| olive oil         |      4.64723 |            10.7579  |       10830 |
+| butter            |      4.6281  |             9.8809  |       14433 |
+| garlic cloves     |      4.62518 |            11.969   |       11828 |
+| pepper            |      4.61988 |            10.8953  |        8071 |
+| salt              |      4.61702 |            10.7828  |       30715 |
+| sugar             |      4.61287 |             9.87285 |       13669 |
+| onion             |      4.60881 |            11.5007  |       12881 |
+| eggs              |      4.59566 |            10.5437  |       10426 |
+| water             |      4.58239 |            10.4309  |       11075 |
+| milk              |      4.57201 |             9.894   |        8160 |
+
 
 ## Assessment of Missingness
 As previously mentioned, the columns that contain missing data are `name`, `description`, and `average_rating`. Let's do some exploration to determine why this may be! 
