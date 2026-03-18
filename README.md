@@ -78,6 +78,7 @@ For this plot, we examined the distribution of the number of ingredients per rec
 This scatter plot shows how the number of ingredients in a recipe impacts its average rating. Recipes with very few ingredients (<5) appear to have slightly lower ratings, while recipes with a moderate number of ingredients (around 8–10) often have the highest average ratings. In between these two ranges, adding more ingredients does not appear to increase ratings and may even correspond to a slight decrease, forming a roughly quadratic trend.
 
 ### Interesting Aggregates
+
 | ingredients_lst   |   avg_rating |   avg_n_ingredients |   n_recipes |
 |:------------------|-------------:|--------------------:|------------:|
 | olive oil         |      4.64723 |            10.7579  |       10830 |
@@ -90,6 +91,8 @@ This scatter plot shows how the number of ingredients in a recipe impacts its av
 | eggs              |      4.59566 |            10.5437  |       10426 |
 | water             |      4.58239 |            10.4309  |       11075 |
 | milk              |      4.57201 |             9.894   |        8160 |
+
+For our pivot table, we examined the 10 most common ingredients in the dataset and computed their average rating, average number of ingredients per recipe, and frequency. We observe that all of the most commonly used ingredients are associated with relatively high average ratings, between 4.57 and 4.65. This is likely because these ingredients appear in a large percentage of recipes, rather than because they directly cause higher ratings. Additionally, recipes containing these ingredients tend to have around 9–11 ingredients on average, suggesting that they are commonly used in moderately complex recipes. Overall, this pivot table helps us understand how commonly used ingredients are distributed across recipes.
 
 
 ## Assessment of Missingness
