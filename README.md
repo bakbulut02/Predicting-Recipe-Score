@@ -4,7 +4,7 @@ Authors: Beliz Akbulut, Caroline McClung
 ## Introduction
 Enjoying food is one of the few universal experiences nearly all living animals share. Though we all share this trait, the types of food we eat, how we cook them, and the combinations of food we eat together vary wildly. The ways we create our own recipes may be due to cultural customs, dietary restrictions, or personal preference, among other factors. But what makes a recipe good? More specifically, we want to research **what features of a recipe have the greatest influence on their rating**. To conduct this exploration, we will use a dataset scraped from food.com that contains a subset of recipes and reviews posted online since 2008. 
 
-The first dataset, `recipe`, contains 83782 rows, 83782 of which are unique recipes, and has 10 columns recording the following information:
+The first dataset, `recipe`, contains 83782 rows, 83782 of which are unique recipes, and has 12 columns recording the following information:
 
 | Column             | Description                                                                                                                                                                                       |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
